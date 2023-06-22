@@ -1,0 +1,93 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class TimeAndStopwatchApp extends JFrame implements ActionListener {
+    private JLabel timeLabel;
+    private JButton currentTimeButton;
+    private JLabel stopwatchLabel;
+    private JTextField stopwatchTextField;
+    private JButton startButton;
+    private JButton stopButton;
+    private long startTime;
+    private boolean stopwatchRunning;
+
+    public TimeAndStopwatchApp() {
+        setTitle("Time and Stopwatch App");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new FlowLayout());
+
+        timeLabel = new JLabel("Current Time");
+
+        currentTimeButton = new JButton("Display Current Time");
+        currentTimeButton.addActionListener(this);
+
+        stopwatchLabel = new JLabel("Stopwatch");
+
+        stopwatchTextField = new JTextField(15);
+        stopwatchTextField.setEditable(false);
+
+        startButton = new JButton("Start");
+        startButton.addActionListener(this);
+
+        stopButton = new JButton("Stop");
+        stopButton.addActionListener(this);
+
+        add(timeLabel);
+        add(currentTimeButton);
+        add(stopwatchLabel);
+        add(stopwatchTextField);
+        add(startButton);
+        add(stopButton);
+
+        startTime = 0;
+        stopwatchRunning = false;
+    }
+
+    public void actionPerformed(ActionEvent event) {
+        if (event.getSource() == currentTimeButton) {
+            displayCurrentTime();
+        } else if (event.getSource() == startButton) {
+            startStopwatch();
+        } else if (event.getSource() == stopButton) {
+            stopStopwatch();
+        }
+    }
+
+    private void displayCurrentTime() {
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        String currentTime = sdf.format(new Date());
+        timeLabel.setText("Current Time: " + currentTime);
+    }
+
+    private void startStopwatch() {
+        if (!stopwatchRunning) {
+            startTime = System.currentTimeMillis();
+            stopwatchRunning = true;
+            stopwatchTextField.setText("Running...");
+        }
+    }
+
+    private void stopStopwatch() {
+        if (stopwatchRunning) {
+            long elapsedTime = System.currentTimeMillis() - startTime;
+            long seconds = elapsedTime / 1000;
+            long milliseconds = elapsedTime % 1000;
+            stopwatchRunning = false;
+            stopwatchTextField.setText(seconds + " seconds " + milliseconds + " milliseconds");
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                TimeAndStopwatchApp app = new TimeAndStopwatchApp();
+                app.setSize(300, 200);
+                app.setVisible(true);
+            }
+        });
+    }
+}
