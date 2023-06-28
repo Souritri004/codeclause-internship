@@ -33,10 +33,3 @@ To use the "Time and Stopwatch" classes, follow these steps:
 2. You can import the classes into your own project or use the provided examples.
 3. Refer to the class documentation and code comments for details on the available methods and their usage.
 
-## License
-
-The projects in this repository are available under the [MIT License](LICENSE).
-
-Feel free to explore the code, make modifications, and use it as a reference for your own projects. If you have any questions or suggestions, please feel free to reach out.
-
-Happy coding!
