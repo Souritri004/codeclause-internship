@@ -6,6 +6,7 @@ This repository contains two Java projects developed during my internship at Cod
 
 1. Folder Locker
 2. Time and Stopwatch
+3. Number Guessing game
 
 ## Folder Locker
 
@@ -33,3 +34,6 @@ To use the "Time and Stopwatch" classes, follow these steps:
 2. You can import the classes into your own project or use the provided examples.
 3. Refer to the class documentation and code comments for details on the available methods and their usage.
 
+## Number Guessing Game
+
+This Java program implements a simple number guessing game. It generates a random number within a predefined range and prompts the user to guess the number. The user has a limited number of attempts to guess correctly. After each guess, the program provides feedback on whether the guess was too high or too low. If the user guesses the correct number within the allotted attempts, their score increases. The game continues until the user either guesses the number correctly or exhausts all attempts.
